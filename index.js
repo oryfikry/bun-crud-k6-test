@@ -2,7 +2,7 @@ import { serve } from "bun";
 import mysql from "mysql2/promise";
 
 const dbConfig = {
-  host: "192.168.0.130",
+  host: "127.0.0.1",
   user: "appuser",
   password: "apppass",
   database: "appdb",
@@ -33,7 +33,7 @@ serve({
 
     // GET all
     if (req.method === "GET" && url.pathname === "/all") {
-      const [rows] = await conn.query("SELECT * FROM wisdom_words");
+      const [rows] = await conn.query("SELECT * FROM wisdom_words limit 1000");
       await conn.end();
       return Response.json(rows);
     }
