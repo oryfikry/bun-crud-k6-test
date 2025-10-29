@@ -2,7 +2,7 @@ import { serve } from "bun";
 import mysql from "mysql2/promise";
 
 const dbConfig = {
-  host: "127.0.0.1",
+  host: "192.168.0.130",
   user: "appuser",
   password: "apppass",
   database: "appdb",
@@ -10,7 +10,7 @@ const dbConfig = {
 };
 
 serve({
-  port: 3001,
+  port: 3003,
   hostname: "0.0.0.0",
   fetch: async (req) => {
     const url = new URL(req.url);
