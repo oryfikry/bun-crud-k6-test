@@ -2,12 +2,13 @@ import { serve } from "bun";
 import mysql from "mysql2/promise";
 
 const dbConfig = {
-  host: "127.0.0.1",
-  user: "appuser",
-  password: "apppass",
-  database: "appdb",
-  port: 3306,
+  host: process.env.DB_HOST || "mysql", // ✅ use service name, not localhost
+  user: process.env.DB_USER || "appuser",
+  password: process.env.DB_PASSWORD || "apppass",
+  database: process.env.DB_NAME || "appdb",
+  port: 3306
 };
+
 
 serve({
   port: 3003,
